@@ -1,0 +1,40 @@
+# Source files
+src/
+examples/
+tests/
+
+# Configuration
+tsconfig.json
+tsconfig.esm.json
+.prettierrc
+.eslintrc
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+
+# Documentation (keep README.md)
+docs/
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.*
+
+# Test
+coverage/
+.nyc_output/
+
+# Misc
+.DS_Store
+*.swp
+*.swo

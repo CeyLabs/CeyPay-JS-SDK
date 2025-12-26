@@ -1,0 +1,62 @@
+{
+  "name": "ceypay-sdk",
+  "version": "1.0.0",
+  "description": "Official TypeScript SDK for the CeyPay Payment API",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "clean": "rm -rf dist",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "ceypay",
+    "payment",
+    "crypto",
+    "bybit",
+    "usdt",
+    "payment-gateway",
+    "sdk",
+    "api",
+    "typescript"
+  ],
+  "author": "CeyPay",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ceypay/ceypay-js-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ceypay/ceypay-js-sdk/issues"
+  },
+  "homepage": "https://github.com/ceypay/ceypay-js-sdk#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "prettier": "^3.1.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
+  }
+}
