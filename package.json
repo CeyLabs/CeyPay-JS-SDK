@@ -1,6 +1,6 @@
 {
   "name": "@ceypay/sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official TypeScript SDK for the CeyPay Payment API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
