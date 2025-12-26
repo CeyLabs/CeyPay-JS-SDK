@@ -547,10 +547,9 @@ Express-compatible webhook verification helper.
 ## Support
 
 - **Documentation**: [https://docs.ceypay.io](https://docs.ceypay.io)
-- **API Reference**: [https://api.ceypay.io/api-docs](https://api.ceypay.io/api-docs)
 - **Email**: support@ceypay.io
 - **Status**: [https://status.ceypay.io](https://status.ceypay.io)
-- **GitHub Issues**: [https://github.com/ceypay/ceypay-js-sdk/issues](https://github.com/ceypay/ceypay-js-sdk/issues)
+- **GitHub Issues**: [https://github.com/CeyLabs/CeyPay-JS-SDK/issues](https://github.com/CeyLabs/CeyPay-JS-SDK/issues)
 
 ## License
 
