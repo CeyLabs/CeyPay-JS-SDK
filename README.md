@@ -1,6 +1,6 @@
 # CeyPay JavaScript/TypeScript SDK
 
-Official TypeScript/JavaScript SDK for the [CeyPay](https://ceypay.com) Payment API. Accept cryptocurrency payments with ease.
+Official TypeScript/JavaScript SDK for the [CeyPay](https://ceypay.io) Payment API. Accept cryptocurrency payments with ease.
 
 [![npm version](https://img.shields.io/npm/v/@ceypay/sdk.svg)](https://www.npmjs.com/package/@ceypay/sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -41,7 +41,7 @@ import { CeyPayClient, Currency } from '@ceypay/sdk';
 
 // Initialize the client
 const client = new CeyPayClient({
-  apiKey: process.env.CEYPAY_API_KEY, // Get from https://dashboard.ceypay.com
+  apiKey: process.env.CEYPAY_API_KEY, // Get from https://merchant.ceypay.io
 });
 
 // Create a payment
@@ -84,7 +84,7 @@ console.log('QR code:', payment.qrContent);
 
 ## Authentication
 
-Get your API key from the [CeyPay Dashboard](https://dashboard.ceypay.com):
+Get your API key from the [CeyPay Dashboard](https://merchant.ceypay.io):
 
 1. Log in to your merchant account
 2. Navigate to **Settings** → **API Keys**
@@ -308,7 +308,7 @@ if (result.success) {
 ```typescript
 const client = new CeyPayClient({
   apiKey: 'ak_live_xxx.sk_live_xxx', // Required
-  baseUrl: 'https://api.ceypay.com', // Optional (default)
+  baseUrl: 'https://api.ceypay.io', // Optional (default)
   timeout: 30000, // Optional timeout in ms (default: 30000)
   debug: false, // Optional debug logging (default: false)
 });
@@ -460,7 +460,7 @@ Create a new CeyPay client instance.
 
 **Parameters:**
 - `config.apiKey` (string, required) - Your CeyPay API key
-- `config.baseUrl` (string, optional) - API base URL (default: `https://api.ceypay.com`)
+- `config.baseUrl` (string, optional) - API base URL (default: `https://api.ceypay.io`)
 - `config.timeout` (number, optional) - Request timeout in ms (default: 30000)
 - `config.debug` (boolean, optional) - Enable debug logging (default: false)
 
@@ -546,10 +546,10 @@ Express-compatible webhook verification helper.
 
 ## Support
 
-- **Documentation**: [https://docs.ceypay.com](https://docs.ceypay.com)
-- **API Reference**: [https://api.ceypay.com/api-docs](https://api.ceypay.com/api-docs)
-- **Email**: support@ceypay.com
-- **Status**: [https://status.ceypay.com](https://status.ceypay.com)
+- **Documentation**: [https://docs.ceypay.io](https://docs.ceypay.io)
+- **API Reference**: [https://api.ceypay.io/api-docs](https://api.ceypay.io/api-docs)
+- **Email**: support@ceypay.io
+- **Status**: [https://status.ceypay.io](https://status.ceypay.io)
 - **GitHub Issues**: [https://github.com/ceypay/ceypay-js-sdk/issues](https://github.com/ceypay/ceypay-js-sdk/issues)
 
 ## License

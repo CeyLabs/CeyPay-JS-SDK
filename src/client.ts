@@ -3,13 +3,21 @@ import { HttpClient } from './utils/http-client';
 import { Payments } from './resources/payments';
 import { PaymentLinks } from './resources/payment-links';
 import { Webhooks } from './resources/webhooks';
-import { CeyPayClientConfig, RateLimitInfo } from './types';
+import { CeyPayClientConfig, RateLimitInfo, Env } from './types';
+
+/**
+ * Environment base URLs
+ */
+const ENVIRONMENT_URLS: Record<Env, string> = {
+  [Env.LIVE]: 'https://api.ceypay.io',
+  [Env.SANDBOX]: 'https://api-sandbox.ceypay.io',
+};
 
 /**
  * Default configuration values
  */
 const DEFAULT_CONFIG = {
-  baseUrl: 'https://api.ceypay.com',
+  env: Env.LIVE,
   timeout: 30000, // 30 seconds
   debug: false,
 };
@@ -65,7 +73,7 @@ export class CeyPayClient {
    *
    * @example
    * ```typescript
-   * // Basic usage
+   * // Basic usage (production environment)
    * const client = new CeyPayClient({
    *   apiKey: 'ak_live_abc123.sk_live_xyz789'
    * });
@@ -73,7 +81,7 @@ export class CeyPayClient {
    * // With custom configuration
    * const client = new CeyPayClient({
    *   apiKey: process.env.CEYPAY_API_KEY,
-   *   baseUrl: 'https://api-staging.ceypay.com', // Use staging environment
+   *   env: Env.SANDBOX, // Use sandbox environment for testing
    *   timeout: 60000, // 60 second timeout
    *   debug: true // Enable debug logging
    * });
@@ -82,15 +90,19 @@ export class CeyPayClient {
   constructor(config: CeyPayClientConfig) {
     // Validate required config
     if (!config.apiKey) {
-      throw new Error('API key is required. Get your API key from https://dashboard.ceypay.com');
+      throw new Error('API key is required. Get your API key from https://merchant.ceypay.io');
     }
 
     // Parse and validate API key format
     const { secretKey } = parseApiKey(config.apiKey);
 
+    // Determine environment and base URL
+    const env = config.env || DEFAULT_CONFIG.env;
+    const baseUrl = ENVIRONMENT_URLS[env];
+
     // Merge with defaults
     const fullConfig = {
-      baseUrl: config.baseUrl || DEFAULT_CONFIG.baseUrl,
+      baseUrl,
       timeout: config.timeout || DEFAULT_CONFIG.timeout,
       debug: config.debug || DEFAULT_CONFIG.debug,
       apiKey: config.apiKey,

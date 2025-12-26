@@ -3,13 +3,23 @@
  */
 
 /**
+ * CeyPay API environments
+ */
+export enum Env {
+  /** Production environment */
+  LIVE = 'LIVE',
+  /** Sandbox environment for testing */
+  SANDBOX = 'SANDBOX',
+}
+
+/**
  * SDK client configuration
  */
 export interface CeyPayClientConfig {
   /** Full API key in format: ak_live_xxx.sk_live_xxx */
   apiKey: string;
-  /** Base URL for API requests (default: https://api.ceypay.com) */
-  baseUrl?: string;
+  /** Environment to use (default: Env.LIVE) */
+  env?: Env;
   /** Request timeout in milliseconds (default: 30000) */
   timeout?: number;
   /** Enable debug logging */
