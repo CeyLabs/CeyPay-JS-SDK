@@ -2,7 +2,7 @@
 
 Official TypeScript/JavaScript SDK for the [CeyPay](https://ceypay.com) Payment API. Accept cryptocurrency payments with ease.
 
-[![npm version](https://img.shields.io/npm/v/ceypay-sdk.svg)](https://www.npmjs.com/package/@ceypay/sdk)
+[![npm version](https://img.shields.io/npm/v/@ceypay/sdk.svg)](https://www.npmjs.com/package/@ceypay/sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
@@ -19,25 +19,25 @@ Official TypeScript/JavaScript SDK for the [CeyPay](https://ceypay.com) Payment 
 ## Installation
 
 ```bash
-npm install ceypay-sdk
+npm install @ceypay/sdk
 ```
 
 Or with yarn:
 
 ```bash
-yarn add ceypay-sdk
+yarn add @ceypay/sdk
 ```
 
 Or with pnpm:
 
 ```bash
-pnpm add ceypay-sdk
+pnpm add @ceypay/sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { CeyPayClient, Currency } from 'ceypay-sdk';
+import { CeyPayClient, Currency } from '@ceypay/sdk';
 
 // Initialize the client
 const client = new CeyPayClient({
@@ -94,7 +94,7 @@ Get your API key from the [CeyPay Dashboard](https://dashboard.ceypay.com):
 ⚠️ **Important**: Never expose your API key in client-side code. The SDK is designed for server-side use only.
 
 ```typescript
-import { CeyPayClient } from 'ceypay-sdk';
+import { CeyPayClient } from '@ceypay/sdk';
 
 const client = new CeyPayClient({
   apiKey: 'ak_live_abc123.sk_live_xyz789',
@@ -106,7 +106,7 @@ const client = new CeyPayClient({
 ### Creating Payments
 
 ```typescript
-import { CeyPayClient, Currency } from 'ceypay-sdk';
+import { CeyPayClient, Currency } from '@ceypay/sdk';
 
 const client = new CeyPayClient({
   apiKey: process.env.CEYPAY_API_KEY,
@@ -245,7 +245,7 @@ Verify webhook signatures to ensure authenticity:
 
 ```typescript
 import express from 'express';
-import { verifyWebhookExpress, WebhookPayload } from 'ceypay-sdk';
+import { verifyWebhookExpress, WebhookPayload } from '@ceypay/sdk';
 
 const app = express();
 
@@ -325,7 +325,7 @@ import {
   ValidationError,
   NotFoundError,
   RateLimitError,
-} from 'ceypay-sdk';
+} from '@ceypay/sdk';
 
 try {
   const payment = await client.payments.create(data);
@@ -418,7 +418,7 @@ import {
   Currency,
   PaymentStatus,
   WebhookPayload,
-} from 'ceypay-sdk';
+} from '@ceypay/sdk';
 
 const request: CreatePaymentRequest = {
   amount: 100,
