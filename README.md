@@ -2,7 +2,7 @@
 
 Official TypeScript/JavaScript SDK for the [CeyPay](https://ceypay.com) Payment API. Accept cryptocurrency payments with ease.
 
-[![npm version](https://img.shields.io/npm/v/ceypay-sdk.svg)](https://www.npmjs.com/package/ceypay-sdk)
+[![npm version](https://img.shields.io/npm/v/ceypay-sdk.svg)](https://www.npmjs.com/package/@ceypay/sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features

@@ -1,14 +1,12 @@
 {
-  "name": "ceypay-sdk",
+  "name": "@ceypay/sdk",
   "version": "1.0.0",
   "description": "Official TypeScript SDK for the CeyPay Payment API",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -18,9 +16,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc && tsc -p tsconfig.esm.json",
+    "build": "tsc",
     "build:cjs": "tsc",
-    "build:esm": "tsc -p tsconfig.esm.json",
     "clean": "rm -rf dist",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
