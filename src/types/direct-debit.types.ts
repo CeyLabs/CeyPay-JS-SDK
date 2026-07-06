@@ -2,6 +2,17 @@ import { PaginatedResponse, PaginationParams } from './common.types';
 
 export type PaymentProvider = 'BINANCE_PAY' | 'BYBIT_PAY' | 'KUCOIN_PAY';
 
+export type DirectDebitContractStatus = 'INITIATED' | 'SIGNED' | 'TERMINATED' | 'EXPIRED';
+
+export interface ListScenariosQuery {
+  provider?: string;
+  active?: boolean;
+}
+
+export interface ScenarioListResponse {
+  data: Scenario[];
+}
+
 export interface Scenario {
   scenarioCode: string;
   provider: PaymentProvider;
@@ -17,7 +28,7 @@ export interface DirectDebitContract {
   merchantContractCode: string;
   bizId?: string;
   provider: PaymentProvider;
-  status: 'INITIATED' | 'SIGNED' | 'TERMINATED' | 'EXPIRED';
+  status: DirectDebitContractStatus;
   currency: string;
   singleUpperLimit: number;
   contractEndTime?: string;
@@ -43,7 +54,7 @@ export interface DirectDebitContractResponse {
 }
 
 export interface ListContractsQuery extends PaginationParams {
-  status?: 'INITIATED' | 'SIGNED' | 'TERMINATED' | 'EXPIRED';
+  status?: DirectDebitContractStatus;
   branchId?: string;
   currency?: string;
   paymentProvider?: PaymentProvider;

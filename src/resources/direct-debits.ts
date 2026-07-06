@@ -1,6 +1,7 @@
 import { HttpClient } from '../utils/http-client';
 import { 
-  Scenario, 
+  ListScenariosQuery,
+  ScenarioListResponse,
   DirectDebitContractResponse, 
   CreateDirectDebitContractParams, 
   ListContractsQuery, 
@@ -19,8 +20,8 @@ export class DirectDebits {
    * @param params Optional provider and active filters
    * @returns A promise that resolves to an object containing an array of Scenarios
    */
-  async listScenarios(params?: { provider?: string; active?: boolean }): Promise<{ data: Scenario[] }> {
-    return this.client.request<{ data: Scenario[] }>('GET', '/v1/direct-debit/scenario-code/list', undefined, params);
+  async listScenarios(params?: ListScenariosQuery): Promise<ScenarioListResponse> {
+    return this.client.request<ScenarioListResponse>('GET', '/v1/direct-debit/scenario-code/list', undefined, params);
   }
 
   /**
