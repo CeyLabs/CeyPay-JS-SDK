@@ -3,6 +3,10 @@ import { HttpClient } from './utils/http-client';
 import { Payments } from './resources/payments';
 import { PaymentLinks } from './resources/payment-links';
 import { Webhooks } from './resources/webhooks';
+import { Banks } from './resources/banks';
+import { Branches } from './resources/branches';
+import { DirectDebits } from './resources/direct-debits';
+import { Withdrawals } from './resources/withdrawals';
 import { CeyPayClientConfig, RateLimitInfo, Env } from './types';
 
 /**
@@ -63,6 +67,18 @@ export class CeyPayClient {
   /** Webhooks resource for webhook configuration */
   public readonly webhooks: Webhooks;
 
+  /** Banks resource for retrieving supported banks */
+  public readonly banks: Banks;
+
+  /** Branches resource for managing merchant branches */
+  public readonly branches: Branches;
+
+  /** Direct Debits resource for managing direct debit contracts and payments */
+  public readonly directDebits: DirectDebits;
+
+  /** Withdrawals resource for managing withdrawal requests */
+  public readonly withdrawals: Withdrawals;
+
   private httpClient: HttpClient;
 
   /**
@@ -116,6 +132,10 @@ export class CeyPayClient {
     this.payments = new Payments(this.httpClient);
     this.paymentLinks = new PaymentLinks(this.httpClient);
     this.webhooks = new Webhooks(this.httpClient);
+    this.banks = new Banks(this.httpClient);
+    this.branches = new Branches(this.httpClient);
+    this.directDebits = new DirectDebits(this.httpClient);
+    this.withdrawals = new Withdrawals(this.httpClient);
   }
 
   /**
