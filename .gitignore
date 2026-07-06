@@ -4,6 +4,9 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
+# ln
+CeyPay-BE
+
 # Build output
 dist/
 *.tsbuildinfo

@@ -13,3 +13,16 @@ export * from './payment-link.types';
 
 // Webhook types
 export * from './webhook.types';
+
+// Bank types
+export * from './bank.types';
+
+// Branch types
+export * from './branch.types';
+
+// Direct Debit types
+export * from './direct-debit.types';
+
+// Withdrawal types
+export * from './withdrawal.types';
+

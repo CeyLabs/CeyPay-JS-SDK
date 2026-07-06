@@ -10,6 +10,9 @@ Official TypeScript/JavaScript SDK for the [CeyPay](https://ceypay.io) Payment A
 - 🔐 **HMAC-SHA256 Authentication** - Secure API request signing
 - 💳 **Payment Management** - Create and track crypto payments
 - 🔗 **Payment Links** - Generate reusable payment links
+- 🏦 **Banks & Branches** - Multi-branch merchant operations
+- 🔄 **Direct Debits** - On-demand pre-authorized payments
+- 💸 **Withdrawals** - Manage merchant withdrawals
 - 🪝 **Webhook Verification** - Built-in webhook signature verification
 - 📘 **Full TypeScript Support** - Complete type definitions
 - ⚡ **Rate Limit Tracking** - Monitor API rate limits
@@ -73,6 +76,9 @@ console.log('QR code:', payment.qrContent);
   - [Retrieving Payments](#retrieving-payments)
   - [Listing Payments](#listing-payments)
   - [Payment Links](#payment-links)
+  - [Banks & Branches](#banks--branches)
+  - [Direct Debits](#direct-debits)
+  - [Withdrawals](#withdrawals)
   - [Webhook Verification](#webhook-verification)
 - [Configuration](#configuration)
 - [Error Handling](#error-handling)
@@ -303,6 +309,64 @@ if (result.success) {
 }
 ```
 
+### Banks & Branches
+
+Manage multi-branch operations and fetch supported banks:
+
+```typescript
+// Fetch supported banks
+const banks = await client.banks.list();
+
+// Create a new branch
+const branch = await client.branches.create({
+  name: 'Downtown Store',
+  code: 'DT01',
+  city: 'Colombo'
+});
+
+// List all branches
+const allBranches = await client.branches.list();
+```
+
+### Direct Debits
+
+Create and manage pre-authorized direct debit payments:
+
+```typescript
+// List supported direct debit scenarios
+const scenarios = await client.directDebits.listScenarios();
+
+// Create a contract for a user to sign
+const contractRes = await client.directDebits.createContract({
+  scenarioCode: 'subscription_tier_1',
+  currency: 'USDT',
+  singleUpperLimit: 100
+});
+
+console.log('Share this link for user to approve:', contractRes.deepLink);
+
+// Later, execute an on-demand payment against a signed contract
+const payment = await client.directDebits.executePayment(contractRes.contract.id, {
+  amount: 25.00,
+  currency: 'USDT',
+  productName: 'Monthly Subscription'
+});
+```
+
+### Withdrawals
+
+Manage your merchant unsettled balance withdrawals:
+
+```typescript
+// Request a withdrawal of unsettled funds
+const withdrawal = await client.withdrawals.create({
+  currency: 'USDT'
+});
+
+// Check withdrawal status
+const withdrawals = await client.withdrawals.list({ status: 'PENDING' });
+```
+
 ## Configuration
 
 ```typescript
@@ -529,6 +593,36 @@ Get webhook configuration including secret.
 Test webhook delivery to your endpoint.
 
 **Returns:** `Promise<WebhookTestResponse>`
+
+### Direct Debits
+
+#### `client.directDebits.listScenarios(params?)`
+
+List supported direct debit scenarios.
+
+#### `client.directDebits.createContract(data)`
+
+Create a direct debit contract for user approval.
+
+#### `client.directDebits.executePayment(id, data)`
+
+Execute an on-demand payment on a signed contract.
+
+### Banks & Branches
+
+#### `client.banks.list()`
+
+List supported banks.
+
+#### `client.branches.create(data)` / `.list(params?)` / `.get(id)` / `.update(id, data)` / `.deactivate(id)`
+
+CRUD operations for merchant branches.
+
+### Withdrawals
+
+#### `client.withdrawals.create(data)` / `.list(params?)` / `.get(id)`
+
+Manage merchant withdrawal requests.
 
 ### Webhook Utilities
 
